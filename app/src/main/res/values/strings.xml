@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">MISO-vinilo-grupo32</string>
+    <string name="app_name">Vinilos</string>
+    <string name="user_button">Usuario</string>
+    <string name="back_button">Atrás</string>
 </resources>

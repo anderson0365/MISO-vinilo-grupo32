@@ -6,13 +6,21 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_gravity="center_vertical"
-    tools:context=".MainActivity">
+    tools:context=".AlbumDetail">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/album_detail_text"
+            tools:text="Sample text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
     <Button
-        android:id="@+id/user_button"
+        android:id="@+id/album_detail_back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/user_button"
+        android:text="@string/back_button"
         android:layout_gravity="center_horizontal"/>
-
 </LinearLayout>
