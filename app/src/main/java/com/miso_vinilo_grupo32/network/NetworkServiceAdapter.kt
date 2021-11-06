@@ -10,6 +10,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 import com.miso_vinilo_grupo32.models.Album
+import com.miso_vinilo_grupo32.models.Song
 
 class NetworkServiceAdapter constructor(context: Context) {
     companion object{
@@ -30,7 +31,13 @@ class NetworkServiceAdapter constructor(context: Context) {
         requestQueue.add(getRequest("albums/${albumId}",
             Response.Listener<String> { response ->
                 val item = JSONObject(response)
-                val album = Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description"))
+                val songs = mutableListOf<Song>()
+                val songsToProcess = item.getJSONArray("tracks")
+                for (i in 0 until songsToProcess.length()){
+                    val song = songsToProcess.getJSONObject(i)
+                    songs.add(i, Song(songId = song.getInt("id"), name= song.getString("name"), duration = song.getString("duration")))
+                }
+                val album = Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description"), songs = songs)
                 onComplete(album)
             },
             Response.ErrorListener {
