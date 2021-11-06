@@ -1,5 +1,6 @@
 package com.miso_vinilo_grupo32.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
@@ -8,6 +9,7 @@ import com.miso_vinilo_grupo32.databinding.ActivityAlbumDetailBinding
 import com.miso_vinilo_grupo32.models.Album
 import com.miso_vinilo_grupo32.viewmodels.AlbumDetailViewModel
 import android.view.View
+import android.view.Window
 import android.widget.*
 import androidx.core.view.setPadding
 import com.miso_vinilo_grupo32.R
@@ -31,6 +33,8 @@ class AlbumDetail : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+
         binding = ActivityAlbumDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -44,6 +48,11 @@ class AlbumDetail : AppCompatActivity() {
         songListButton = findViewById(R.id.songs_display)
         songListButton.setOnClickListener{
             showSongList()
+        }
+
+        findViewById<Button>(R.id.back_button_album_detail).setOnClickListener {
+            var intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
         val cover: ImageView = findViewById(R.id.album_image)

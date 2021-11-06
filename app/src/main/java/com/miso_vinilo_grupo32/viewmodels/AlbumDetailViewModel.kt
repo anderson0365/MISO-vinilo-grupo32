@@ -4,11 +4,14 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.miso_vinilo_grupo32.models.Album
 import com.miso_vinilo_grupo32.network.NetworkServiceAdapter
+import com.miso_vinilo_grupo32.repositories.AlbumDetailRepository
 
 class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidViewModel(application) {
 
     private val _album = MutableLiveData<Album>()
     private val id = albumId
+
+    private val albumDetailRepository = AlbumDetailRepository(application)
 
     val album: LiveData<Album>
         get() = _album
@@ -28,7 +31,7 @@ class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidVie
     }
 
     private fun refreshDataFromNetwork() {
-        NetworkServiceAdapter.getInstance(getApplication()).getAlbum(id, {
+        albumDetailRepository.refreshData(id, {
             _album.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
