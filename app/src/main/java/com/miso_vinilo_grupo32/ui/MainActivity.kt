@@ -1,9 +1,10 @@
-package com.miso_vinilo_grupo32
+package com.miso_vinilo_grupo32.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.miso_vinilo_grupo32.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

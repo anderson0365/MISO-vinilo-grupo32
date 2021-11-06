@@ -3,8 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Programming/MISO/Ciclo4/SoftwareApp/MISO-vinilo-grupo32/app/src/main/res/layout/activity_album_detail.xml" value="0.2966485507246377" />
+        <entry key="..\:/Programming/MISO/Ciclo4/SoftwareApp/MISO-vinilo-grupo32/app/src/main/res/layout/activity_album_detail.xml" value="0.1" />
         <entry key="..\:/Programming/MISO/Ciclo4/SoftwareApp/MISO-vinilo-grupo32/app/src/main/res/layout/activity_main.xml" value="0.2966485507246377" />
+        <entry key="..\:/Programming/MISO/Ciclo4/SoftwareApp/MISO-vinilo-grupo32/app/src/main/res/layout/album_detail.xml" value="0.16770833333333332" />
+        <entry key="..\:/Programming/MISO/Ciclo4/SoftwareApp/MISO-vinilo-grupo32/app/src/main/res/layout/album_detail_item.xml" value="0.21195652173913043" />
+        <entry key="..\:/Programming/MISO/Ciclo4/SoftwareApp/MISO-vinilo-grupo32/app/src/main/res/layout/album_item.xml" value="0.15364583333333334" />
+        <entry key="..\:/Programming/MISO/Ciclo4/SoftwareApp/MISO-vinilo-grupo32/app/src/main/res/layout/fragment_album_detail.xml" value="0.21195652173913043" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.11018237082066869" />
       </map>
     </option>

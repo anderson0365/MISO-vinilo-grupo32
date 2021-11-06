@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="album"
+            type="com.miso_vinilo_grupo32.models.Album" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/album_name"
+            tools:text="Sample text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{album.name}" />
+
+        <TextView
+            android:id="@+id/album_cover"
+            tools:text="Sample text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{album.cover}" />
+
+        <TextView
+            android:id="@+id/album_genre"
+            tools:text="Sample text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{album.genre}" />
+
+        <TextView
+            android:id="@+id/album_description"
+            tools:text="Sample text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{album.description}" />
+
+        <TextView
+            android:id="@+id/album_recordLabel"
+            tools:text="Sample text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{album.recordLabel}" />
+
+    </LinearLayout>
+</layout>
