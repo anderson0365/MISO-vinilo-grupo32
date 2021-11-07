@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">MISO-vinilo-grupo32</string>
+    <string name="app_name">Vinilos</string>
+    <string name="user_button">Usuario</string>
+    <string name="back_button">Atrás</string>
+    <string name="cover_image">Imagen de carátual</string>
+    <string name="release_date">Fecha de lanzamiento:</string>
+    <string name="record_label">Casa Discográfica:</string>
+    <string name="songs_button">Canciones</string>
 </resources>
