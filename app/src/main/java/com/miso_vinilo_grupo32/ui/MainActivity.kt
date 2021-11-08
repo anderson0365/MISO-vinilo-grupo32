@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.user_button).setOnClickListener {
             var intent = Intent(this, AlbumDetail::class.java)
             intent.putExtra("albumId", 101)
+
             startActivity(intent)
         }
     }

@@ -18,6 +18,7 @@ import java.net.MalformedURLException
 
 
 
+
 class AlbumDetail : AppCompatActivity() {
 
     private lateinit var binding: ActivityAlbumDetailBinding

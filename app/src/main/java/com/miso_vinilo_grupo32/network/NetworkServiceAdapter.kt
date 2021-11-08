@@ -15,6 +15,7 @@ import com.miso_vinilo_grupo32.models.Song
 class NetworkServiceAdapter constructor(context: Context) {
     companion object{
         const val BASE_URL= "https://public-back-sandbox-vinyls.herokuapp.com/"
+
         var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
