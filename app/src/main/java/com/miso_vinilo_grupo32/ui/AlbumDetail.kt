@@ -11,11 +11,12 @@ import com.miso_vinilo_grupo32.viewmodels.AlbumDetailViewModel
 import android.view.View
 import android.view.Window
 import android.widget.*
-import androidx.core.view.setPadding
 import com.miso_vinilo_grupo32.R
 import com.squareup.picasso.Picasso
 import java.io.IOException
 import java.net.MalformedURLException
+
+
 
 
 class AlbumDetail : AppCompatActivity() {
@@ -88,6 +89,8 @@ class AlbumDetail : AppCompatActivity() {
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
+
+
             }
         })
         viewModel.eventNetworkError.observe(this, Observer<Boolean> { isNetworkError ->
