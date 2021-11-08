@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         findViewById<Button>(R.id.user_button).setOnClickListener {
             var intent = Intent(this, AlbumDetail::class.java)
-            intent.putExtra("albumId", 100)
+            intent.putExtra("albumId", 101)
             startActivity(intent)
         }
     }

@@ -14,7 +14,7 @@ import com.miso_vinilo_grupo32.models.Song
 
 class NetworkServiceAdapter constructor(context: Context) {
     companion object{
-        const val BASE_URL= "http://192.168.72.132:3000/"
+        const val BASE_URL= "http://192.168.72.129:3000/"
         var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
