@@ -1,5 +1,8 @@
 package com.miso_vinilo_grupo32.models
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Album (
     val albumId:Int,
     val name:String,
@@ -11,6 +14,7 @@ data class Album (
     val songs: MutableList<Song>
 )
 
+@Serializable
 data class Song(
     val songId: Int,
     val name: String,

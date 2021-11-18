@@ -1,10 +1,15 @@
 package com.miso_vinilo_grupo32.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.miso_vinilo_grupo32.models.Album
 import com.miso_vinilo_grupo32.network.NetworkServiceAdapter
 import com.miso_vinilo_grupo32.repositories.AlbumDetailRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.lang.Exception
+import java.lang.reflect.Executable
 
 class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidViewModel(application) {
 
@@ -31,13 +36,16 @@ class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidVie
     }
 
     private fun refreshDataFromNetwork() {
-        albumDetailRepository.refreshData(id, {
-            _album.postValue(it)
+        try{
+            viewModelScope.launch (Dispatchers.Default) {
+                val data = albumDetailRepository.refreshData(id)
+                _album.postValue(data)
+            }
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
-        }, {
+        }catch (e: Exception){
             _eventNetworkError.value = true
-        })
+        }
     }
 
     fun onNetworkErrorShown() {

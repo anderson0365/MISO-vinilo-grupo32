@@ -11,13 +11,11 @@ import com.miso_vinilo_grupo32.viewmodels.AlbumDetailViewModel
 import android.view.View
 import android.view.Window
 import android.widget.*
+import androidx.core.net.toUri
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.miso_vinilo_grupo32.R
-import com.squareup.picasso.Picasso
-import java.io.IOException
-import java.net.MalformedURLException
-
-
-
 
 class AlbumDetail : AppCompatActivity() {
 
@@ -82,14 +80,14 @@ class AlbumDetail : AppCompatActivity() {
                     songListLayout.addView(textView)
                 }
 
-                try {
-                    Picasso.get().load(this.cover).into(cover)
-                } catch (e: MalformedURLException) {
-                    e.printStackTrace()
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-
+                Glide.with(context)
+                    .load(this.cover.toUri().buildUpon().scheme("https").build())
+                    .apply(
+                        RequestOptions()
+                        .placeholder(R.drawable.ic_downloading_image_foreground)
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .error(R.drawable.ic_broken_image_foreground))
+                    .into(cover)
 
             }
         })
