@@ -1,21 +1,23 @@
 package com.miso_vinilo_grupo32.network
 
 import android.content.Context
+import androidx.core.content.contentValuesOf
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
-import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 import com.miso_vinilo_grupo32.models.Album
 import com.miso_vinilo_grupo32.models.Song
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 class NetworkServiceAdapter constructor(context: Context) {
     companion object{
         const val BASE_URL= "https://public-back-sandbox-vinyls.herokuapp.com/"
-
         var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
@@ -28,7 +30,7 @@ class NetworkServiceAdapter constructor(context: Context) {
         // applicationContext keeps you from leaking the Activity or BroadcastReceiver if someone passes one in.
         Volley.newRequestQueue(context.applicationContext)
     }
-    fun getAlbum(albumId: Int, onComplete:(resp: Album )->Unit , onError: (error:VolleyError)->Unit){
+    suspend fun getAlbum(albumId: Int) = suspendCoroutine<Album> { cont ->
         requestQueue.add(getRequest("albums/${albumId}",
             Response.Listener<String> { response ->
                 val item = JSONObject(response)
@@ -38,11 +40,10 @@ class NetworkServiceAdapter constructor(context: Context) {
                     val song = songsToProcess.getJSONObject(i)
                     songs.add(i, Song(songId = song.getInt("id"), name= song.getString("name"), duration = song.getString("duration")))
                 }
-                val album = Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description"), songs = songs)
-                onComplete(album)
+                cont.resume(Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description"), songs = songs))
             },
             Response.ErrorListener {
-                onError(it)
+                cont.resumeWithException(it)
             }))
     }
 
