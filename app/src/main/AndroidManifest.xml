@@ -13,10 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MISOvinilogrupo32">
         <activity
-            android:name=".ui.AlbumDetail"
+            android:name=".ui.MainView"
             android:exported="false" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.DetailAlbumView"
+            android:exported="false" />
+        <activity
+            android:name=".ui.UserLoginView"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

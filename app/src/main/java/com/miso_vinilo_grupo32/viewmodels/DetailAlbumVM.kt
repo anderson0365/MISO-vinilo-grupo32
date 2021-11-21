@@ -1,22 +1,19 @@
 package com.miso_vinilo_grupo32.viewmodels
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.miso_vinilo_grupo32.models.Album
-import com.miso_vinilo_grupo32.network.NetworkServiceAdapter
-import com.miso_vinilo_grupo32.repositories.AlbumDetailRepository
+import com.miso_vinilo_grupo32.repositories.DetailAlbumRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
-import java.lang.reflect.Executable
 
-class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidViewModel(application) {
+class DetailAlbumVM(application: Application, albumId: Int) :  AndroidViewModel(application) {
 
     private val _album = MutableLiveData<Album>()
     private val id = albumId
 
-    private val albumDetailRepository = AlbumDetailRepository(application)
+    private val albumDetailRepository = DetailAlbumRepository(application)
 
     val album: LiveData<Album>
         get() = _album
@@ -54,9 +51,9 @@ class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidVie
 
     class Factory(val app: Application, val albumId: Int) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(AlbumDetailViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(DetailAlbumVM::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return AlbumDetailViewModel(app, albumId) as T
+                return DetailAlbumVM(app, albumId) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }

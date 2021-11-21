@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.util.LruCache
 import com.miso_vinilo_grupo32.models.Album
+import com.miso_vinilo_grupo32.models.SimpleArtist
 
 class CacheManager (context: Context){
 
@@ -17,9 +18,8 @@ class CacheManager (context: Context){
             }
     }
 
-
-
     private val albumCacheSize = 3
+    private var simpleArtists: MutableList<SimpleArtist> = mutableListOf()
     private var albums: LruCache<Int, Album> = LruCache(albumCacheSize)
 
     fun addAlbum(newAlbum: Album){
@@ -31,6 +31,14 @@ class CacheManager (context: Context){
     fun getAlbum(albumId: Int) : Album?{
         var album = albums.get(albumId)
         return album?: null
+    }
+
+    fun addSimpleArtists( newSimpleArtists: MutableList<SimpleArtist>){
+        simpleArtists = newSimpleArtists
+    }
+
+    fun getSimpleArtists() : MutableList<SimpleArtist> {
+        return simpleArtists
     }
 
     fun clearCache() {

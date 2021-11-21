@@ -10,7 +10,7 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-class AlbumDetailRepository (val application: Application) {
+class DetailAlbumRepository (val application: Application) {
 
     suspend fun refreshData(albumId:Int): Album{
         val potentialResp = CacheManager.getInstance(application.applicationContext).getAlbum(albumId)
@@ -21,6 +21,4 @@ class AlbumDetailRepository (val application: Application) {
         }
         return potentialResp!!
     }
-
-
 }

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_margin">10dp</dimen>
+    <dimen name="default_padding">10dp</dimen>
     <dimen name="image_size">180dp</dimen>
+    <dimen name="artists_list_image">100dp</dimen>
+    <dimen name="list_item_margin">5dp</dimen>
+    <dimen name="list_padding">20dp</dimen>
 </resources>
