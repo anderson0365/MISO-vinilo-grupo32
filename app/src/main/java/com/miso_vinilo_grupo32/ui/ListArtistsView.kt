@@ -13,24 +13,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.miso_vinilo_grupo32.databinding.FragmentListArtistViewBinding
 import com.miso_vinilo_grupo32.models.SimpleArtist
 import com.miso_vinilo_grupo32.ui.adapters.ListArtistsAdapter
-import com.miso_vinilo_grupo32.viewmodels.ListArtistVM
+import com.miso_vinilo_grupo32.viewmodels.ListArtistsVM
 
-class ListArtistView : Fragment() {
+class ListArtistsView : Fragment() {
 
     private var _binding : FragmentListArtistViewBinding? = null
     private val binding get() = _binding!!
-    private lateinit var ArtistsVM : ListArtistVM
+    private lateinit var artistsVM : ListArtistsVM
     private lateinit var viewModelAdapter: ListArtistsAdapter
     private lateinit var recyclerView: RecyclerView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentListArtistViewBinding.inflate(inflater, container, false)
         viewModelAdapter = ListArtistsAdapter()
         return binding.root
@@ -51,14 +47,14 @@ class ListArtistView : Fragment() {
         }
         //activity.actionBar?.title = getString(R.string.title_collectors)
 
-        ArtistsVM = ViewModelProvider(this, ListArtistVM.Factory(activity.application)).get(ListArtistVM::class.java)
-        ArtistsVM.artists.observe(viewLifecycleOwner, Observer<MutableList<SimpleArtist>> {
+        artistsVM = ViewModelProvider(this, ListArtistsVM.Factory(activity.application)).get(ListArtistsVM::class.java)
+        artistsVM.artists.observe(viewLifecycleOwner,  {
             it.apply {
                 viewModelAdapter!!.artists = this
             }
         })
 
-        ArtistsVM.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
+        artistsVM.eventNetworkError.observe(viewLifecycleOwner, { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
     }
@@ -69,9 +65,9 @@ class ListArtistView : Fragment() {
     }
 
     private fun onNetworkError() {
-        if(!ArtistsVM.isNetworkErrorShown.value!!) {
+        if(!artistsVM.isNetworkErrorShown.value!!) {
             Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
-            ArtistsVM.onNetworkErrorShown()
+            artistsVM.onNetworkErrorShown()
         }
     }
 }

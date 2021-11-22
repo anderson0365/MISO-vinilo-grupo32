@@ -11,7 +11,7 @@ class MainView :AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_view)
         findViewById<Button>(R.id.back_button_main).setOnClickListener {
-            var intent = Intent(this, UserLoginView::class.java)
+            val intent = Intent(this, UserLoginView::class.java)
             startActivity(intent)
         }
     }

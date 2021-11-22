@@ -1,8 +1,6 @@
 package com.miso_vinilo_grupo32.network
 
 import android.content.Context
-import android.provider.MediaStore
-import androidx.core.content.contentValuesOf
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -21,7 +19,7 @@ import kotlin.coroutines.suspendCoroutine
 class NetworkServiceAdapter constructor(context: Context) {
     companion object{
         const val BASE_URL= "https://public-back-sandbox-vinyls.herokuapp.com/"
-        var instance: NetworkServiceAdapter? = null
+        private var instance: NetworkServiceAdapter? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
                 instance ?: NetworkServiceAdapter(context).also {
@@ -69,10 +67,11 @@ class NetworkServiceAdapter constructor(context: Context) {
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
     }
-    private fun postRequest(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ):JsonObjectRequest{
+
+    /*private fun postRequest(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ):JsonObjectRequest{
         return  JsonObjectRequest(Request.Method.POST, BASE_URL+path, body, responseListener, errorListener)
     }
     private fun putRequest(path: String, body: JSONObject,  responseListener: Response.Listener<JSONObject>, errorListener: Response.ErrorListener ):JsonObjectRequest{
         return  JsonObjectRequest(Request.Method.PUT, BASE_URL+path, body, responseListener, errorListener)
-    }
+    }*/
 }

@@ -50,7 +50,7 @@ class DetailAlbumView : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.back_button_album_detail).setOnClickListener {
-            var intent = Intent(this, MainView::class.java)
+            val intent = Intent(this, MainView::class.java)
             startActivity(intent)
         }
 
@@ -60,11 +60,11 @@ class DetailAlbumView : AppCompatActivity() {
 
         AlbumVM = ViewModelProvider(this, DetailAlbumVM.Factory(application, albumId)).get(
             DetailAlbumVM::class.java)
-        AlbumVM.album.observe(this, Observer<Album> {
+        AlbumVM.album.observe(this, {
             it.apply {
                 binding.album = this
                 binding.genreText = "(${this.genre})"
-                var release_date = this.releaseDate.substring(0, 10).split("-")
+                val release_date = this.releaseDate.substring(0, 10).split("-")
                 binding.releaseDate = " ${release_date[2]}/${release_date[1]}/${release_date[0]}"
                 binding.recordLabel = " ${this.recordLabel}"
 
@@ -91,7 +91,7 @@ class DetailAlbumView : AppCompatActivity() {
 
             }
         })
-        AlbumVM.eventNetworkError.observe(this, Observer<Boolean> { isNetworkError ->
+        AlbumVM.eventNetworkError.observe(this,  { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
 

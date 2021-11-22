@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class ListArtistVM(application: Application) :  AndroidViewModel(application) {
+class ListArtistsVM(application: Application) :  AndroidViewModel(application) {
 
     private val _artists = MutableLiveData<MutableList<SimpleArtist>>()
 
@@ -17,12 +17,12 @@ class ListArtistVM(application: Application) :  AndroidViewModel(application) {
     val artists: LiveData<MutableList<SimpleArtist>>
         get() = _artists
 
-    private var _eventNetworkError = MutableLiveData<Boolean>(false)
+    private var _eventNetworkError = MutableLiveData(false)
 
     val eventNetworkError: LiveData<Boolean>
         get() = _eventNetworkError
 
-    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
+    private var _isNetworkErrorShown = MutableLiveData(false)
 
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
@@ -50,9 +50,9 @@ class ListArtistVM(application: Application) :  AndroidViewModel(application) {
 
     class Factory(val app: Application) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(ListArtistVM::class.java)) {
+            if (modelClass.isAssignableFrom(ListArtistsVM::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return ListArtistVM(app) as T
+                return ListArtistsVM(app) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }

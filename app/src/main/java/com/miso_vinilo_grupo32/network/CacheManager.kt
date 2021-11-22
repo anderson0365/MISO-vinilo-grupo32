@@ -1,7 +1,6 @@
 package com.miso_vinilo_grupo32.network
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.util.LruCache
 import com.miso_vinilo_grupo32.models.Album
 import com.miso_vinilo_grupo32.models.SimpleArtist
@@ -9,7 +8,7 @@ import com.miso_vinilo_grupo32.models.SimpleArtist
 class CacheManager (context: Context){
 
     companion object{
-        var instance: CacheManager? = null
+        private var instance: CacheManager? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this){
                 instance ?: CacheManager(context).also {
@@ -29,7 +28,7 @@ class CacheManager (context: Context){
     }
 
     fun getAlbum(albumId: Int) : Album?{
-        var album = albums.get(albumId)
+        val album = albums.get(albumId)
         return album?: null
     }
 
@@ -39,9 +38,5 @@ class CacheManager (context: Context){
 
     fun getSimpleArtists() : MutableList<SimpleArtist> {
         return simpleArtists
-    }
-
-    fun clearCache() {
-        albums.evictAll()
     }
 }

@@ -21,7 +21,7 @@ class ListArtistsAdapter : RecyclerView.Adapter<ListArtistsAdapter.ArtistViewHol
             field = value
             notifyDataSetChanged()
         }
-    lateinit var parentContext: Context
+    private lateinit var parentContext: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistViewHolder {
         val withDataBinding: ListItemBinding = DataBindingUtil.inflate(

@@ -11,7 +11,7 @@ class UserLoginView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_login)
         findViewById<Button>(R.id.user_button).setOnClickListener {
-            var intent = Intent(this, MainView::class.java)
+            val intent = Intent(this, MainView::class.java)
             //intent.putExtra("albumId", 100)
             startActivity(intent)
         }

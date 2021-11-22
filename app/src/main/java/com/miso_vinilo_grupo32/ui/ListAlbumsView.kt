@@ -17,14 +17,10 @@ class ListAlbumsView : Fragment() {
     private val binding get() = _binding!!
     private lateinit var detail_button : Button
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentListAlbumsViewBinding.inflate(inflater, container, false)
         return binding.root
     }

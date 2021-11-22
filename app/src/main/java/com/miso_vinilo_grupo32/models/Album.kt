@@ -15,17 +15,6 @@ data class Album (
 )
 
 @Serializable
-data class SimplifiedAlbum(
-    val albumId:Int,
-    val name:String,
-    val cover:String,
-    val releaseDate:String,
-    val description:String,
-    val genre:String,
-    val recordLabel:String,
-)
-
-@Serializable
 data class Song(
     val songId: Int,
     val name: String,

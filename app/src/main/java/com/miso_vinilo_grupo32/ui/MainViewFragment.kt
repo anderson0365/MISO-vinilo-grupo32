@@ -1,8 +1,6 @@
 package com.miso_vinilo_grupo32.ui
 
-import android.content.Context
 import android.os.Bundle
-import android.provider.Settings.System.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +16,7 @@ class MainViewFragment : Fragment() {
     // representing an object in the collection.
     private lateinit var pagerAdapter: PagerAdapter
     private lateinit var viewPager: ViewPager
-    lateinit var options: List<String>
+    private lateinit var options: List<String>
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -38,9 +36,7 @@ class MainViewFragment : Fragment() {
 
 // Since this is an object collection, use a FragmentStatePagerAdapter,
 // and NOT a FragmentPagerAdapter.
-class PagerAdapter(options: List<String>,fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
-
-    val options = options
+class PagerAdapter(private val options: List<String>,fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
     override fun getCount(): Int  = options.size
 
@@ -48,7 +44,7 @@ class PagerAdapter(options: List<String>,fm: FragmentManager) : FragmentStatePag
         val fragment = if (i == 0){
             ListAlbumsView()
         }else{
-            ListArtistView()
+            ListArtistsView()
         }
         return fragment
     }
