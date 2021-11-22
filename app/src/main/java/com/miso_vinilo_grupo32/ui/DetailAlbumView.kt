@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.miso_vinilo_grupo32.databinding.ActivityAlbumDetailBinding
 import com.miso_vinilo_grupo32.models.Album
-import com.miso_vinilo_grupo32.viewmodels.AlbumDetailViewModel
+import com.miso_vinilo_grupo32.viewmodels.DetailAlbumVM
 import android.view.View
 import android.view.Window
 import android.widget.*
@@ -17,10 +17,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.miso_vinilo_grupo32.R
 
-class AlbumDetail : AppCompatActivity() {
+class DetailAlbumView : AppCompatActivity() {
 
     private lateinit var binding: ActivityAlbumDetailBinding
-    private lateinit var viewModel: AlbumDetailViewModel
+    private lateinit var AlbumVM: DetailAlbumVM
 
     private var watchingSongsList = false
     private lateinit var songListButton: RelativeLayout
@@ -28,7 +28,7 @@ class AlbumDetail : AppCompatActivity() {
     private lateinit var arrowUpImageView: ImageView
     private lateinit var arrowDownImageView: ImageView
     private lateinit var songListLayout: LinearLayout
-    private lateinit var context: AlbumDetail
+    private lateinit var context: DetailAlbumView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +50,7 @@ class AlbumDetail : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.back_button_album_detail).setOnClickListener {
-            var intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainView::class.java)
             startActivity(intent)
         }
 
@@ -58,13 +58,13 @@ class AlbumDetail : AppCompatActivity() {
 
         val albumId = intent?.extras?.getInt("albumId")!!
 
-        viewModel = ViewModelProvider(this, AlbumDetailViewModel.Factory(application, albumId)).get(
-            AlbumDetailViewModel::class.java)
-        viewModel.album.observe(this, Observer<Album> {
+        AlbumVM = ViewModelProvider(this, DetailAlbumVM.Factory(application, albumId)).get(
+            DetailAlbumVM::class.java)
+        AlbumVM.album.observe(this, {
             it.apply {
                 binding.album = this
                 binding.genreText = "(${this.genre})"
-                var release_date = this.releaseDate.substring(0, 10).split("-")
+                val release_date = this.releaseDate.substring(0, 10).split("-")
                 binding.releaseDate = " ${release_date[2]}/${release_date[1]}/${release_date[0]}"
                 binding.recordLabel = " ${this.recordLabel}"
 
@@ -91,7 +91,7 @@ class AlbumDetail : AppCompatActivity() {
 
             }
         })
-        viewModel.eventNetworkError.observe(this, Observer<Boolean> { isNetworkError ->
+        AlbumVM.eventNetworkError.observe(this,  { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
 
@@ -114,9 +114,9 @@ class AlbumDetail : AppCompatActivity() {
     }
 
     private fun onNetworkError() {
-        if(!viewModel.isNetworkErrorShown.value!!) {
+        if(!AlbumVM.isNetworkErrorShown.value!!) {
             Toast.makeText(this, "Network Error", Toast.LENGTH_LONG).show()
-            viewModel.onNetworkErrorShown()
+            AlbumVM.onNetworkErrorShown()
         }
     }
 

@@ -6,7 +6,7 @@ import androidx.test.espresso.ViewAction
 import androidx.test.espresso.matcher.ViewMatchers.isRoot
 import org.hamcrest.Matcher
 
-fun waitFor(delay: Long): ViewAction? {
+fun waitFor(delay: Long): ViewAction {
     return object : ViewAction {
         override fun getConstraints(): Matcher<View> = isRoot()
         override fun getDescription(): String = "wait for $delay milliseconds"

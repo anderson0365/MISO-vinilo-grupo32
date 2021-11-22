@@ -20,20 +20,30 @@ import static com.miso_vinilo_grupo32.UtilitiesKt.waitFor;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.core.IsNot.not;
 
-import com.miso_vinilo_grupo32.ui.MainActivity;
+import com.miso_vinilo_grupo32.ui.UserLoginView;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class AlbumDetailTest {
+public class DetailAlbumViewTest {
 
     @Rule
-    public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
+    public ActivityTestRule<UserLoginView> mActivityTestRule = new ActivityTestRule<>(UserLoginView.class);
 
     @Test
     public void albumDetailContentAndFlowTest() {
 
         ViewInteraction userButton = onView(allOf(withId(R.id.user_button), withText(R.string.user_button),isDisplayed()));
         userButton.perform(click());
+
+        onView(isRoot()).perform(waitFor(2000));
+
+        ViewInteraction albumTap = onView((allOf(withText(R.string.albums_tap), isDisplayed())));
+        albumTap.perform(click());
+
+        onView(isRoot()).perform(waitFor(2000));
+
+        ViewInteraction detail_button = onView((allOf(withId(R.id.album_detail_button),withText(R.string.album_detail_button), isDisplayed())));
+        detail_button.perform(click());
 
         onView(isRoot()).perform(waitFor(5000));
 
@@ -60,6 +70,10 @@ public class AlbumDetailTest {
 
         ViewInteraction backButton = onView(allOf(withId(R.id.back_button_album_detail), withText(R.string.back_button),isDisplayed()));
         backButton.perform(click());
+
+        onView(isRoot()).perform(waitFor(1000));
+
+        onView(allOf(withId(R.id.back_button_main), withText(R.string.back_button),isDisplayed())).perform(click());
 
         onView(isRoot()).perform(waitFor(1000));
 
