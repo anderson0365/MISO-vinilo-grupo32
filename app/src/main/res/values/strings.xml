@@ -6,4 +6,7 @@
     <string name="release_date">Fecha de lanzamiento:</string>
     <string name="record_label">Casa Discográfica:</string>
     <string name="songs_button">Canciones</string>
+    <string name="artist_tap">Artistas</string>
+    <string name="albums_tap">Álbumes</string>
+    <string name="album_detail_button">Detalle Album</string>
 </resources>
