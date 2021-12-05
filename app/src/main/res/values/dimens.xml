@@ -5,4 +5,5 @@
     <dimen name="artists_list_image">100dp</dimen>
     <dimen name="list_item_margin">5dp</dimen>
     <dimen name="list_padding">20dp</dimen>
+    <dimen name="init_icon">250dp</dimen>
 </resources>

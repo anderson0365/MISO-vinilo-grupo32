@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name"> VinilosApp </string>
+    <string name="user_button">Usuário</string>
+    <string name="back_button">Voltar</string>
+    <string name="cover_image">Imagem da capa</string>
+    <string name="release_date">Data de lançamento:</string>
+    <string name="record_label">Rótulo:</string>
+    <string name="songs_button">Listar músicas</string>
+    <string name="artist_tap">Artistas</string>
+    <string name="albums_tap">Álbuns</string>
+    <string name="album_detail_button">Consultar álbum</string>
+    <string name="id_album_hint">ID do álbum</string>
+    <string name="album_not_found">Álbum não encontrado</string>
+    <string name="vinilos_init_icon"> Vinis, ícone da tela inicial</string>
+    <string name="network_error">Erro de conexão</string>
+    <string name="invalid_id">ERROR! Invalid input.</string>
+    <string name="hide_tracks_list">Ocultar lista de músicas</string>
+    <string name="show_tracks_list">Mostrar lista de músicas</string>
+    <string name="artist_image">Imagem do artista</string>
+    <string name="minutes">minutos</string>
+    <string name="seconds">segundos</string>
+</resources>

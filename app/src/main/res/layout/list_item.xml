@@ -23,12 +23,15 @@
             android:background="@color/main_color"
             android:layout_gravity="center_horizontal"
             android:scaleType="fitXY"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@tools:sample/avatars"
+            android:contentDescription="@string/artist_image" />
 
         <TextView
             android:id="@+id/album_list_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textDirection="locale"
+            android:textAlignment="gravity"
             android:textSize="11sp"
             android:gravity="center"
             android:textColor="@color/black"
