@@ -1,12 +1,22 @@
 <resources>
-    <string name="app_name">Vinilos</string>
+    <string name="app_name">VinilosApp</string>
     <string name="user_button">Usuario</string>
     <string name="back_button">Atrás</string>
     <string name="cover_image">Imagen de carátual</string>
     <string name="release_date">Fecha de lanzamiento:</string>
     <string name="record_label">Casa Discográfica:</string>
-    <string name="songs_button">Canciones</string>
+    <string name="songs_button">Listar canciones</string>
     <string name="artist_tap">Artistas</string>
     <string name="albums_tap">Álbumes</string>
-    <string name="album_detail_button">Detalle Album</string>
+    <string name="album_detail_button">Consultar Álbum</string>
+    <string name="id_album_hint">ID de album</string>
+    <string name="album_not_found">Álbum no encontrado</string>
+    <string name="vinilos_init_icon">Vinilos, icono pantalla inicio</string>
+    <string name="network_error">Error de conexión</string>
+    <string name="invalid_id">¡ERROR! Entrada no válida.</string>
+    <string name="hide_tracks_list">Ocultar lista de canciones</string>
+    <string name="show_tracks_list">Mostrar lista de canciones</string>
+    <string name="artist_image">Imagen de artista</string>
+    <string name="minutes">minutos</string>
+    <string name="seconds">segundos</string>
 </resources>

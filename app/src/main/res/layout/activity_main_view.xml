@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/back_button"
-                android:textColor="#795548"
+                android:textColor="@color/back_button_text"
                 android:theme="@style/Theme.MISOvinilogrupo32.BackButton" />
         </LinearLayout>
 

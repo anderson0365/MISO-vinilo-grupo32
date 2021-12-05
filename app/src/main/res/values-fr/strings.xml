@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VinilosApp</string>
+    <string name="user_button">Utilisateur</string>
+    <string name="back_button">Retour</string>
+    <string name="cover_image">Pochette de l\'album</string>
+    <string name="release_date">Date de sortie:</string>
+    <string name="record_label">Label:</string>
+    <string name="songs_button">Liste des pistes</string>
+    <string name="artist_tap">Artistes</string>
+    <string name="albums_tap">Albums</string>
+    <string name="album_detail_button">Voir l\'album</string>
+    <string name="id_album_hint">Identifiant de l\'album</string>
+    <string name="album_not_found">Album introuvable</string>
+    <string name="vinilos_init_icon">Icône de l\'écran d\'accueil Vinilos</string>
+    <string name="network_error">Erreur de connexion</string>
+    <string name="invalid_id">ERREUR! Entrée non valide.</string>
+    <string name="hide_tracks_list">Masquer la liste des chansons</string>
+    <string name="show_tracks_list">Afficher la liste des chansons</string>
+    <string name="artist_image">Image de l\'artiste</string>
+    <string name="minutes">minutes</string>
+    <string name="seconds">secondes</string>
+</resources>

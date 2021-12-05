@@ -7,12 +7,13 @@ import android.widget.Button
 import com.miso_vinilo_grupo32.R
 
 class UserLoginView : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_login)
+
         findViewById<Button>(R.id.user_button).setOnClickListener {
             val intent = Intent(this, MainView::class.java)
-            //intent.putExtra("albumId", 100)
             startActivity(intent)
         }
     }
