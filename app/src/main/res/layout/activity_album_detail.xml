@@ -40,10 +40,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textDirection="locale"
+                    android:textAlignment="gravity"
                     android:paddingTop="20dp"
                     android:paddingBottom="5dp"
                     android:text="@{album.name}"
-                    android:textSize="20sp"
+                    android:textSize="28sp"
                     android:textStyle="bold"
                     tools:text="Sample text" />
                 <LinearLayout
@@ -68,6 +70,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:textDirection="locale"
+                        android:textAlignment="gravity"
                         android:paddingBottom="15dp"
                         android:text="@{genre_text}"
                         tools:text="Sample text" />
@@ -77,6 +81,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:textDirection="locale"
+                        android:textAlignment="gravity"
                         android:paddingBottom="@dimen/default_margin"
                         android:text="@{album.description}"
                         tools:text="Sample text" />
@@ -86,6 +92,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:textDirection="locale"
+                        android:textAlignment="gravity"
                         tools:text="Sample text" />
 
                     <LinearLayout
@@ -95,12 +103,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textDirection="locale"
+                            android:textAlignment="gravity"
                             android:text="@string/release_date"
                             android:textStyle="bold"
                             tools:text="Sample text"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textDirection="locale"
+                            android:textAlignment="gravity"
                             android:text="@{release_date}"
                             tools:text="Sample text" />
                     </LinearLayout>
@@ -113,11 +125,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/record_label"
+                            android:textDirection="locale"
+                            android:textAlignment="gravity"
                             android:textStyle="bold"
                             tools:text="Sample text" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textDirection="locale"
+                            android:textAlignment="gravity"
                             android:text="@{record_label}"
                             tools:text="Sample text" />
                     </LinearLayout>
@@ -128,27 +144,41 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/default_margin"
                     android:layout_marginRight="@dimen/default_margin"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:background="@color/teal_200"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textDirection="locale"
+                        android:textAlignment="gravity"
+                        android:layout_marginStart="@dimen/default_margin"
+                        android:padding="@dimen/default_margin"
                         android:text="@string/songs_button"
+                        android:textColor="@color/black"
                         android:layout_alignParentStart="true"
                         android:textStyle="bold"
-                        android:textSize="16sp"
+                        android:textSize="25sp"
                         tools:text="Sample text"/>
+
                     <ImageView
                         android:id="@+id/arrow_up"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
+                        android:contentDescription="@string/show_tracks_list"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_marginEnd="@dimen/default_margin"
                         app:srcCompat="@android:drawable/arrow_up_float" />
+
                     <ImageView
                         android:id="@+id/arrow_down"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
+                        android:contentDescription="@string/hide_tracks_list"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_marginEnd="@dimen/default_margin"
                         android:visibility="gone"
                         app:srcCompat="@android:drawable/arrow_down_float" />
                 </RelativeLayout>
@@ -181,7 +211,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:theme="@style/Theme.MISOvinilogrupo32.BackButton"
-                android:text="@string/back_button" />
+                android:text="@string/back_button"
+                android:textColor="@color/back_button_text"/>
         </LinearLayout>
 
 

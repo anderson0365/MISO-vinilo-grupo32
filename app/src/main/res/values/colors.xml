@@ -10,4 +10,5 @@
     <color name="gold_700">#FFDAA520</color>
     <color name="main_color">#FF00BFFF</color>
     <color name="main_color_variant">#FF1E90FF</color>
+    <color name="back_button_text">#795548</color>
 </resources>

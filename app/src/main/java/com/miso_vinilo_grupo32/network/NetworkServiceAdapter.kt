@@ -4,7 +4,6 @@ import android.content.Context
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONObject
@@ -31,7 +30,7 @@ class NetworkServiceAdapter constructor(context: Context) {
         // applicationContext keeps you from leaking the Activity or BroadcastReceiver if someone passes one in.
         Volley.newRequestQueue(context.applicationContext)
     }
-    suspend fun getAlbum(albumId: Int) = suspendCoroutine<Album> { cont ->
+    suspend fun getAlbum(albumId: Int) = suspendCoroutine<Album?> { cont ->
         requestQueue.add(getRequest("albums/${albumId}",
             Response.Listener<String> { response ->
                 val item = JSONObject(response)
@@ -42,15 +41,16 @@ class NetworkServiceAdapter constructor(context: Context) {
                     songs.add(i, Song(songId = song.getInt("id"), name= song.getString("name"), duration = song.getString("duration")))
                 }
                 cont.resume(Album(albumId = item.getInt("id"),name = item.getString("name"), cover = item.getString("cover"), recordLabel = item.getString("recordLabel"), releaseDate = item.getString("releaseDate"), genre = item.getString("genre"), description = item.getString("description"), songs = songs))
+
             },
             Response.ErrorListener {
-                cont.resumeWithException(it)
+                cont.resume(null)
             }))
     }
 
     suspend fun getSimpleArtists() = suspendCoroutine<MutableList<SimpleArtist>> { cont ->
         requestQueue.add(getRequest("musicians",
-            Response.Listener<String> { response ->
+            { response ->
                 val items = JSONArray(response)
                 val artists = mutableListOf<SimpleArtist>()
                 for (i in 0 until items.length()){
@@ -59,7 +59,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                 }
                 cont.resume(artists)
             },
-            Response.ErrorListener {
+            {
                 cont.resumeWithException(it)
             }))
     }

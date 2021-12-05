@@ -8,12 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.google.android.material.tabs.TabLayout
 import com.miso_vinilo_grupo32.R
+import com.miso_vinilo_grupo32.databinding.FragmentMainViewBinding
 
 class MainViewFragment : Fragment() {
     // When requested, this adapter returns a DemoObjectFragment,
     // representing an object in the collection.
+    private var _binding : FragmentMainViewBinding? = null
+    private val binding get() = _binding!!
     private lateinit var pagerAdapter: PagerAdapter
     private lateinit var viewPager: ViewPager
     private lateinit var options: List<String>
@@ -21,15 +23,16 @@ class MainViewFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_main_view, container, false)
+        _binding = FragmentMainViewBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         options = listOf(getString(R.string.albums_tap), getString(R.string.artist_tap))
         pagerAdapter = PagerAdapter(options, childFragmentManager)
-        viewPager = view.findViewById(R.id.pager)
+        viewPager = binding.pager
         viewPager.adapter = pagerAdapter
-        val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout)
+        val tabLayout = binding.tabLayout
         tabLayout.setupWithViewPager(viewPager)
     }
 }

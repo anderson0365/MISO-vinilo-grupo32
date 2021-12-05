@@ -10,11 +10,28 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/album_id_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textDirection="locale"
+            android:textAlignment="gravity"
+            android:layout_margin="@dimen/default_margin"
+            android:ems="10"
+            android:hint="@string/id_album_hint"
+            android:textColorHint="@color/black"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:autofillHints="" />
+
         <Button
             android:id="@+id/album_detail_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/album_detail_button"
+            android:textColor="@color/black"
             android:layout_gravity="center_horizontal"/>
+
     </LinearLayout>
 </FrameLayout>

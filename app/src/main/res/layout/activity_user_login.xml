@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -7,11 +8,30 @@
     android:layout_gravity="center_vertical"
     tools:context=".ui.UserLoginView">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textDirection="locale"
+        android:textAlignment="gravity"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        android:textSize="35sp"
+        />
+
+    <ImageView
+        android:layout_width="@dimen/init_icon"
+        android:layout_height="@dimen/init_icon"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/vinilos_init_icon"
+        app:srcCompat="@mipmap/ic_init_icon" />
+
     <Button
         android:id="@+id/user_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/user_button"
+        android:textColor="@color/black"
         android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

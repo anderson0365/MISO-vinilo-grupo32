@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.miso_vinilo_grupo32.R
 import com.miso_vinilo_grupo32.databinding.FragmentListArtistViewBinding
-import com.miso_vinilo_grupo32.models.SimpleArtist
 import com.miso_vinilo_grupo32.ui.adapters.ListArtistsAdapter
 import com.miso_vinilo_grupo32.viewmodels.ListArtistsVM
 
@@ -66,7 +65,7 @@ class ListArtistsView : Fragment() {
 
     private fun onNetworkError() {
         if(!artistsVM.isNetworkErrorShown.value!!) {
-            Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity,getString(R.string.network_error), Toast.LENGTH_LONG).show()
             artistsVM.onNetworkErrorShown()
         }
     }
